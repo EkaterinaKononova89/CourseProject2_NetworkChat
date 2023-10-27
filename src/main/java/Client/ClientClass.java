@@ -1,3 +1,5 @@
+package Client;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,12 +7,17 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client {
+public class ClientClass {
+
+    protected final String host;
+    protected final int port;
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws IOException {
-        String host = "netology.homework";//"127.0.0.1";
-        int port = 8091;
+    public ClientClass(String host, int port) {
+        this.host = host;
+        this.port = port;
+    }
+    public void startClient() throws IOException {
 
         try (Socket clientSocket = new Socket(host, port);
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
